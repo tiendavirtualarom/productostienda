@@ -11,26 +11,31 @@
 
   <div class="productos">
     <div class="producto">
-      <img src="imagenes/Lipgloss.jpg" alt="Producto 1">
-      <h3>Camisa Blanca</h3>
-      <p>Camisa 100% algodón</p>
-      <span>$45.000</span>
-      <button onclick="agregarAlCarrito('Camisa Blanca', 45000)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="imagenes/Aceites.jpg" alt="Producto 2">
-      <h3>Jeans Azules</h3>
-      <p>Jeans corte recto</p>
-      <span>$90.000</span>
-      <button onclick="agregarAlCarrito('Jeans Azules', 90000)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="imagenes/Flowerandroses.jpg" alt="Producto 3">
-      <h3>Tenis Deportivos</h3>
-      <p>Tenis cómodos para correr</p>
-      <span>$130.000</span>
-      <button onclick="agregarAlCarrito('Tenis Deportivos', 130000)">Agregar al carrito</button>
-    </div>
+		<img src="imagenes/Flowerandroses.jpg" alt="Flower and roses">
+		<h3>Camisa Blanca</h3>
+		<p>Camisa 100% algodón</p>
+		<span>$45.000</span>
+		<input type="number" id="cantidad-camisa" min="1" value="1" />
+		<button onclick="agregarAlCarrito('Camisa Blanca', 45000, 'cantidad-camisa')">Agregar</button>
+	</div>
+
+	<div class="producto">
+	  <img src="imagenes/Aceites.jpg" alt="Aceites">
+	  <h3>Jeans Azules</h3>
+	  <p>Jeans corte recto</p>
+	  <span>$90.000</span>
+	  <input type="number" id="cantidad-jeans" min="1" value="1" />
+	  <button onclick="agregarAlCarrito('Jeans Azules', 90000, 'cantidad-jeans')">Agregar</button>
+	</div>
+
+	<div class="producto">
+	  <img src="imagenes/Lipgloss.jpg" alt="Lipgloss">
+	  <h3>Tenis Deportivos</h3>
+	  <p>Tenis cómodos para correr</p>
+	  <span>$130.000</span>
+	  <input type="number" id="cantidad-tenis" min="1" value="1" />
+	  <button onclick="agregarAlCarrito('Tenis Deportivos', 130000, 'cantidad-tenis')">Agregar</button>
+	</div>
   </div>
 
   <hr />
