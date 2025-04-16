@@ -63,3 +63,38 @@ function mostrarSeccion(seccion) {
     actualizarCarrito(); // refresca el carrito por si hubo cambios
   }
 }
+
+function mostrarMensajeExito() {
+  const mensaje = document.getElementById('mensaje-exito');
+  mensaje.textContent = "✅ Producto agregado con éxito. Haz clic en 'Ver carrito' para revisar tu compra.";
+  mensaje.style.display = 'block';
+
+  // Reiniciar animación
+  mensaje.classList.remove("toast");
+  void mensaje.offsetWidth; // reinicia animación
+  mensaje.classList.add("toast");
+
+  // Ocultar después de 3 segundos
+  setTimeout(() => {
+    mensaje.style.display = 'none';
+  }, 3000);
+}
+
+function agregarAlCarrito(nombre, precio, idCantidad) {
+  const cantidad = parseInt(document.getElementById(idCantidad).value);
+
+  if (isNaN(cantidad) || cantidad < 1) {
+    alert("Cantidad inválida");
+    return;
+  }
+
+  const existente = carrito.find(item => item.nombre === nombre);
+  if (existente) {
+    existente.cantidad += cantidad;
+  } else {
+    carrito.push({ nombre, precio, cantidad });
+  }
+
+  actualizarCarrito();
+  mostrarMensajeExito(); // <-- AQUI
+}
