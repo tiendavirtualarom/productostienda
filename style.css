@@ -29,24 +29,27 @@ h1 {
 }
 
 .seccion {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  padding: 0 10px;
 }
 
 .producto {
   background: white;
-  padding: 15px;
+  padding: 10px;
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  width: 220px;
   text-align: center;
+  font-size: 14px;
 }
 
 .producto img {
   width: 100%;
+  height: auto;
   border-radius: 6px;
+  max-height: 100px;
+  object-fit: cover;
 }
 
 input[type="number"] {
@@ -87,4 +90,25 @@ button:hover {
   0%   { opacity: 1; }
   80%  { opacity: 1; }
   100% { opacity: 0; display: none; }
+}
+
+@media (max-width: 600px) {
+  .producto h3 {
+    font-size: 14px;
+  }
+
+  .producto p,
+  .producto span {
+    font-size: 13px;
+  }
+
+  button {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  input[type="number"] {
+    width: 50px;
+    font-size: 13px;
+  }
 }
