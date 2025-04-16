@@ -4,10 +4,35 @@ body {
   background-color: #f7f7f7;
 }
 
-.productos {
+h1 {
+  text-align: center;
+}
+
+.nav {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nav button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.nav button:hover {
+  background: #0056b3;
+}
+
+.seccion {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .producto {
@@ -15,14 +40,18 @@ body {
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  width: 200px;
+  width: 220px;
   text-align: center;
 }
 
 .producto img {
   width: 100%;
-  height: auto;
-  border-radius: 4px;
+  border-radius: 6px;
+}
+
+input[type="number"] {
+  width: 60px;
+  margin-top: 8px;
 }
 
 button {

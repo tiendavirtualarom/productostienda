@@ -7,43 +7,51 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Bienvenido a Mi Tienda</h1>
+  <h1>Mi Tienda</h1>
 
-  <div class="productos">
-    <div class="producto">
-		<img src="imagenes/Flowerandroses.jpg" alt="Flower and roses">
-		<h3>Flower and roses</h3>
-		<p>Para limpiar rostro</p>
-		<span>$45.000</span>
-		<input type="number" id="cantidad-camisa" min="1" value="1" />
-		<button onclick="agregarAlCarrito('Camisa Blanca', 45000, 'cantidad-camisa')">Agregar</button>
-	</div>
-
-	<div class="producto">
-	  <img src="imagenes/Aceites.jpg" alt="Aceites">
-	  <h3>Aceites</h3>
-	  <p>Aceites corporales nutricionales</p>
-	  <span>$90.000</span>
-	  <input type="number" id="cantidad-jeans" min="1" value="1" />
-	  <button onclick="agregarAlCarrito('Jeans Azules', 90000, 'cantidad-jeans')">Agregar</button>
-	</div>
-
-	<div class="producto">
-	  <img src="imagenes/Lipgloss.jpg" alt="Lipgloss">
-	  <h3>Lipgloss</h3>
-	  <p>Lipgloss económicos</p>
-	  <span>$130.000</span>
-	  <input type="number" id="cantidad-tenis" min="1" value="1" />
-	  <button onclick="agregarAlCarrito('Tenis Deportivos', 130000, 'cantidad-tenis')">Agregar</button>
-	</div>
+  <!-- Botones de navegación -->
+  <div class="nav">
+    <button onclick="mostrarSeccion('productos')">🛍️ Ver productos</button>
+    <button onclick="mostrarSeccion('carrito')">🧾 Ver carrito</button>
   </div>
 
-  <hr />
+  <!-- Sección de productos -->
+  <div id="seccion-productos" class="seccion">
+    <div class="producto">
+      <img src="imagenes/Lipgloss.jpg" alt="Lipgloss">
+	  <h3>Lipgloss</h3>
+	  <p>Lipgloss económicos</p>
+      <span>$45.000</span>
+      <input type="number" id="cantidad-camisa" min="1" value="1" />
+      <button onclick="agregarAlCarrito('Camisa Blanca', 45000, 'cantidad-camisa')">Agregar</button>
+    </div>
 
-  <h2>Carrito de Compras</h2>
-  <ul id="lista-carrito"></ul>
-  <p id="total"></p>
-  <button onclick="enviarPedidoWhatsApp()">Enviar pedido por WhatsApp</button>
+    <div class="producto">
+      <img src="imagenes/Aceites.jpg" alt="Aceites">
+	  <h3>Aceites</h3>
+	  <p>Aceites corporales nutricionales</p>
+      <span>$90.000</span>
+      <input type="number" id="cantidad-jeans" min="1" value="1" />
+      <button onclick="agregarAlCarrito('Jeans Azules', 90000, 'cantidad-jeans')">Agregar</button>
+    </div>
+
+    <div class="producto">
+      <img src="imagenes/Flowerandroses.jpg" alt="Flower and roses">
+	  <h3>Flower and roses</h3>
+	  <p>Para limpiar rostro</p>
+      <span>$130.000</span>
+      <input type="number" id="cantidad-tenis" min="1" value="1" />
+      <button onclick="agregarAlCarrito('Tenis Deportivos', 130000, 'cantidad-tenis')">Agregar</button>
+    </div>
+  </div>
+
+  <!-- Sección del carrito -->
+  <div id="seccion-carrito" class="seccion" style="display: none;">
+    <h2>Carrito de Compras</h2>
+    <ul id="lista-carrito"></ul>
+    <p id="total"></p>
+    <button onclick="enviarPedidoWhatsApp()">📦 Enviar pedido por WhatsApp</button>
+  </div>
 
   <script src="script.js"></script>
 </body>

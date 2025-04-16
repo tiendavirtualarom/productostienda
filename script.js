@@ -8,7 +8,6 @@ function agregarAlCarrito(nombre, precio, idCantidad) {
     return;
   }
 
-  // Si ya existe el producto en el carrito, solo actualiza la cantidad
   const existente = carrito.find(item => item.nombre === nombre);
   if (existente) {
     existente.cantidad += cantidad;
@@ -42,11 +41,25 @@ function enviarPedidoWhatsApp() {
     return;
   }
 
-  const numero = "3054328798"; // Reemplaza con TU número
+  const numero = "3054328798"; // Cambia a tu número
   const mensaje = carrito.map(p => `- ${p.nombre} x${p.cantidad}: $${(p.precio * p.cantidad).toLocaleString()}`).join('\n');
   const total = carrito.reduce((sum, p) => sum + p.precio * p.cantidad, 0);
   const textoFinal = `Hola, quiero comprar:\n${mensaje}\n\nTotal: $${total.toLocaleString()}`;
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(textoFinal)}`;
 
   window.open(url, "_blank");
+}
+
+function mostrarSeccion(seccion) {
+  const productos = document.getElementById('seccion-productos');
+  const carrito = document.getElementById('seccion-carrito');
+
+  if (seccion === 'productos') {
+    productos.style.display = 'flex';
+    carrito.style.display = 'none';
+  } else {
+    productos.style.display = 'none';
+    carrito.style.display = 'block';
+    actualizarCarrito(); // refresca el carrito por si hubo cambios
+  }
 }
