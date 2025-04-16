@@ -17,6 +17,11 @@
     <button onclick="mostrarSeccion('productos')">🛍️ Ver productos</button>
     <button onclick="mostrarSeccion('carrito')">🧾 Ver carrito</button>
   </div>
+  
+  <!-- Barra de búsqueda -->
+  <div class="buscador">
+    <input type="text" id="busqueda" placeholder="🔍 Buscar productos..." onkeyup="filtrarProductos()" />
+  </div>
 
   <!-- Sección de productos -->
   <div id="seccion-productos" class="seccion">
@@ -46,6 +51,16 @@
       <input type="number" id="cantidad-tenis" min="1" value="1" />
       <button onclick="agregarAlCarrito('Tenis Deportivos', 130000, 'cantidad-tenis')">Agregar</button>
     </div>
+	
+	<div class="producto">
+      <img src="imagenes/splashshimer.jpg" alt="splash shimer">
+	  <h3>splash shimer</h3>
+	  <p>Fragancia</p>
+      <span>$10.000</span>
+      <input type="number" id="cantidad-tenis" min="1" value="1" />
+      <button onclick="agregarAlCarrito('Tenis Deportivos', 130000, 'cantidad-tenis')">Agregar</button>
+    </div>
+	
   </div>
 
   <!-- Sección del carrito -->

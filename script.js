@@ -55,14 +55,17 @@ function mostrarSeccion(seccion) {
   const carrito = document.getElementById('seccion-carrito');
 
   if (seccion === 'productos') {
-    productos.style.display = 'flex';
+    productos.style.display = 'grid';
     carrito.style.display = 'none';
+    document.getElementById('busqueda').value = ''; // limpiar búsqueda
+    filtrarProductos(); // mostrar todos de nuevo
   } else {
     productos.style.display = 'none';
     carrito.style.display = 'block';
-    actualizarCarrito(); // refresca el carrito por si hubo cambios
+    actualizarCarrito();
   }
 }
+
 
 function mostrarMensajeExito() {
   const mensaje = document.getElementById('mensaje-exito');
@@ -97,4 +100,18 @@ function agregarAlCarrito(nombre, precio, idCantidad) {
 
   actualizarCarrito();
   mostrarMensajeExito(); // <-- AQUI
+}
+
+function filtrarProductos() {
+  const filtro = document.getElementById('busqueda').value.toLowerCase();
+  const productos = document.querySelectorAll('.producto');
+
+  productos.forEach(producto => {
+    const texto = producto.innerText.toLowerCase();
+    if (texto.includes(filtro)) {
+      producto.style.display = 'block';
+    } else {
+      producto.style.display = 'none';
+    }
+  });
 }
