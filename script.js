@@ -42,7 +42,7 @@ function enviarPedidoWhatsApp() {
     return;
   }
 
-  const numero = "573001234567"; // Reemplaza con TU número
+  const numero = "3054328798"; // Reemplaza con TU número
   const mensaje = carrito.map(p => `- ${p.nombre} x${p.cantidad}: $${(p.precio * p.cantidad).toLocaleString()}`).join('\n');
   const total = carrito.reduce((sum, p) => sum + p.precio * p.cantidad, 0);
   const textoFinal = `Hola, quiero comprar:\n${mensaje}\n\nTotal: $${total.toLocaleString()}`;
