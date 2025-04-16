@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Tienda</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Bienvenido a Mi Tienda</h1>
+
+  <div class="productos">
+    <div class="producto">
+      <img src="https://via.placeholder.com/150" alt="Producto 1">
+      <h3>Camisa Blanca</h3>
+      <p>Camisa 100% algodón</p>
+      <span>$45.000</span>
+      <button onclick="agregarAlCarrito('Camisa Blanca', 45000)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://via.placeholder.com/150" alt="Producto 2">
+      <h3>Jeans Azules</h3>
+      <p>Jeans corte recto</p>
+      <span>$90.000</span>
+      <button onclick="agregarAlCarrito('Jeans Azules', 90000)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://via.placeholder.com/150" alt="Producto 3">
+      <h3>Tenis Deportivos</h3>
+      <p>Tenis cómodos para correr</p>
+      <span>$130.000</span>
+      <button onclick="agregarAlCarrito('Tenis Deportivos', 130000)">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <hr />
+
+  <h2>Carrito de Compras</h2>
+  <ul id="lista-carrito"></ul>
+  <p id="total"></p>
+  <button onclick="enviarPedidoWhatsApp()">Enviar pedido por WhatsApp</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
