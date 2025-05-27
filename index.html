@@ -2,75 +2,239 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mi Tienda</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AROM Tienda Virtual - Maquillaje y Cuidado Personal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 20px;
+    }
+    .logo {
+      font-size: 3rem;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .search-input {
+      padding: 10px;
+      width: 300px;
+      border-radius: 20px;
+      border: none;
+    }
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .category-btn {
+      background-color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .category-btn.active {
+      background-color: #764ba2;
+      color: white;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .product-name {
+      font-weight: bold;
+    }
+    .product-description {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .product-price {
+      margin: 10px 0;
+      color: #764ba2;
+      font-weight: bold;
+    }
+    .add-to-cart-btn {
+      background: #764ba2;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .cart-icon, .floating-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .cart-icon {
+      bottom: 80px;
+      background: white;
+      color: #764ba2;
+    }
+  </style>
 </head>
 <body>
-  <h1>Mi Tienda</h1>
+  <div class="container">
+    <header>
+      <div class="logo">Tienda Virtual AROM</div>
+      <div class="subtitle">Maquillaje y Cuidado Personal</div>
+    </header>
 
-  <!-- Mensaje flotante -->
-  <div id="mensaje-exito" class="toast" style="display: none;"></div>
-
-  <!-- Botones de navegación -->
-  <div class="nav">
-    <button onclick="mostrarSeccion('productos')">🛍️ Ver productos</button>
-    <button onclick="mostrarSeccion('carrito')">🧾 Ver carrito</button>
-  </div>
-  
-  <!-- Barra de búsqueda -->
-  <div class="buscador">
-    <input type="text" id="busqueda" placeholder="🔍 Buscar productos..." onkeyup="filtrarProductos()" />
-  </div>
-
-  <!-- Sección de productos -->
-  <div id="seccion-productos" class="seccion">
-    <div class="producto">
-      <img src="imagenes/Lipgloss.jpg" alt="Lipgloss">
-	  <h3>Lipgloss</h3>
-	  <p>Lipgloss económicos</p>
-      <span>$45.000</span>
-      <input type="number" id="cantidad-camisa" min="1" value="1" />
-      <button onclick="agregarAlCarrito('Camisa Blanca', 45000, 'cantidad-camisa')">Agregar</button>
+    <div class="search-bar">
+      <input type="text" id="searchInput" class="search-input" placeholder="Buscar productos...">
     </div>
 
-    <div class="producto">
-      <img src="imagenes/Aceites.jpg" alt="Aceites">
-	  <h3>Aceites</h3>
-	  <p>Aceites corporales nutricionales</p>
-      <span>$90.000</span>
-      <input type="number" id="cantidad-jeans" min="1" value="1" />
-      <button onclick="agregarAlCarrito('Jeans Azules', 90000, 'cantidad-jeans')">Agregar</button>
+    <div class="category-buttons">
+      <button class="category-btn active" onclick="filterCategory('todos')">Todos</button>
+      <button class="category-btn" onclick="filterCategory('cuidado-facial')">Cuidado Facial</button>
+      <button class="category-btn" onclick="filterCategory('labios')">Labios</button>
+      <button class="category-btn" onclick="filterCategory('rubores')">Rubores</button>
+      <button class="category-btn" onclick="filterCategory('sombras')">Sombras</button>
+      <button class="category-btn" onclick="filterCategory('pestañas')">Pestañas</button>
     </div>
 
-    <div class="producto">
-      <img src="imagenes/Flowerandroses.jpg" alt="Flower and roses">
-	  <h3>Flower and roses</h3>
-	  <p>Para limpiar rostro</p>
-      <span>$130.000</span>
-      <input type="number" id="cantidad-tenis" min="1" value="1" />
-      <button onclick="agregarAlCarrito('Tenis Deportivos', 130000, 'cantidad-tenis')">Agregar</button>
-    </div>
-	
-	<div class="producto">
-      <img src="imagenes/splashshimer.jpg" alt="splash shimer">
-	  <h3>splash shimer</h3>
-	  <p>Fragancia</p>
-      <span>$10.000</span>
-      <input type="number" id="cantidad-tenis" min="1" value="1" />
-      <button onclick="agregarAlCarrito('Tenis Deportivos', 130000, 'cantidad-tenis')">Agregar</button>
-    </div>
-	
+    <div class="products-grid" id="productsContainer"></div>
   </div>
 
-  <!-- Sección del carrito -->
-  <div id="seccion-carrito" class="seccion" style="display: none;">
-    <h2>Carrito de Compras</h2>
-    <ul id="lista-carrito"></ul>
-    <p id="total"></p>
-    <button onclick="enviarPedidoWhatsApp()">📦 Enviar pedido por WhatsApp</button>
-  </div>
+  <div id="cartSummary" style="position:fixed; bottom:140px; right:20px; background:#fff; padding:15px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); max-width:300px; z-index:1000; display:none;"></div>
 
-  <script src="script.js"></script>
+  <div class="floating-whatsapp" onclick="contactWhatsApp()">📱</div>
+  <div class="cart-icon" onclick="sendCartToWhatsApp()">🛒</div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const products = [
+      { name: 'Crema Hidratante de Arroz BIOAQUA', description: 'Textura suave...', price: '$8.000', category: 'cuidado-facial' },
+      { name: 'Tinta para Labios', description: 'Tinta de larga duración...', price: '$5.000', category: 'labios' },
+      { name: 'Rubor Líquido MLSMILE', description: 'Rubor líquido...', price: '$8.000', category: 'rubores' },
+      { name: 'Paleta de Sombras 40 Tonos', description: 'Paleta versátil...', price: '$25.000', category: 'sombras' },
+      { name: 'Pestañina PROSA', description: 'Volumen y definición...', price: '$20.000', category: 'pestañas' },
+      // Agrega el resto aquí...
+    ];
+
+    const productsContainer = document.getElementById('productsContainer');
+
+    function displayProducts(list) {
+      productsContainer.innerHTML = '';
+      list.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.setAttribute('data-category', p.category);
+        card.innerHTML = `
+          <div class="product-name">${p.name}</div>
+          <div class="product-description">${p.description}</div>
+          <div class="product-price">${p.price}</div>
+          <button class="add-to-cart-btn" onclick="addToCart(this)">Agregar al carrito</button>
+        `;
+        productsContainer.appendChild(card);
+      });
+    }
+
+    function addToCart(button) {
+      const card = button.closest('.product-card');
+      const name = card.querySelector('.product-name').innerText;
+      const price = card.querySelector('.product-price').innerText;
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} agregado al carrito.`);
+    }
+
+    function sendCartToWhatsApp() {
+      if (cart.length === 0) return alert('Tu carrito está vacío.');
+      showCartSummary();
+    }
+
+    function showCartSummary() {
+  const container = document.getElementById('cartSummary');
+  const total = cart.reduce((sum, item) => sum + parseInt(item.price.replace(/[^0-9]/g, '')), 0);
+  container.innerHTML = '<strong>Resumen del carrito:</strong><br><ul style="margin:10px 0; padding-left: 20px;">' +
+    cart.map((item, index) => `<li>${item.name} - ${item.price} <button onclick="removeFromCart(${index})" style="margin-left:10px;color:red;border:none;background:none;cursor:pointer;">✖</button></li>`).join('') +
+    '</ul><p><strong>Total:</strong> $' + total.toLocaleString('es-CO') + '</p>' +
+    '<button onclick="confirmCart()" style="background:#25D366; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer;">Enviar por WhatsApp</button>';
+  container.style.display = 'block';
+} - ${item.price}</li>`).join('') +
+    '</ul><p><strong>Total:</strong> $' + total.toLocaleString('es-CO') + '</p>' +
+    '<button onclick="confirmCart()" style="background:#25D366; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer;">Enviar por WhatsApp</button>';
+  container.style.display = 'block';
+} - ${item.price}</li>`).join('') +
+        '</ul><button onclick="confirmCart()" style="background:#25D366; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer;">Enviar por WhatsApp</button>';
+      container.style.display = 'block';
+    }
+
+    function confirmCart() {
+      let msg = 'Hola, quiero hacer el siguiente pedido:%0A';
+      cart.forEach((item, i) => msg += `${i+1}. ${item.name} - ${item.price}%0A`);
+      localStorage.removeItem('cart');
+      cart = [];
+      document.getElementById('cartSummary').style.display = 'none';
+      window.open(`https://wa.me/573054328798?text=${msg}`, '_blank');
+    }. ${item.name} - ${item.price}%0A`);
+      localStorage.removeItem('cart');
+      window.open(`https://wa.me/573054328798?text=${msg}`, '_blank');
+      cart = [];
+    }. ${item.name} - ${item.price}%0A`);
+      window.open(`https://wa.me/573054328798?text=${msg}`, '_blank');
+    }
+
+    function contactWhatsApp() {
+      window.open('https://wa.me/573054328798', '_blank');
+    }
+
+    function filterCategory(cat) {
+      document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      if (cat === 'todos') displayProducts(products);
+      else displayProducts(products.filter(p => p.category === cat));
+    }
+
+    document.getElementById('searchInput').addEventListener('input', e => {
+      const val = e.target.value.toLowerCase();
+      const filtered = products.filter(p =>
+        p.name.toLowerCase().includes(val) ||
+        p.description.toLowerCase().includes(val)
+      );
+      displayProducts(filtered);
+    });
+
+    // Inicializar
+    displayProducts(products);
+  function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  showCartSummary();
+}
+</script>
 </body>
 </html>
