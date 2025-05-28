@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Crema Hidratante BIOAQUA",
+    "desc": "Hidratación ligera ideal para piel sensible y seca.",
+    "price": 8000
+  },
+  {
+    "name": "Tinta Labial Mate",
+    "desc": "Color vibrante y duradero con textura ligera.",
+    "price": 5000
+  },
+  {
+    "name": "Paleta de Sombras Glam",
+    "desc": "24 tonos con acabados mate y brillantes para cualquier ocasión.",
+    "price": 25000
+  },
+  {
+    "name": "Serum Facial con Ácido Hialurónico",
+    "desc": "Hidratación profunda para una piel luminosa.",
+    "price": 12000
+  },
+  {
+    "name": "Pestañina Volumen Extra",
+    "desc": "Máscara para pestañas con efecto alargador y volumen instantáneo.",
+    "price": 7000
+  }
+]
